@@ -1,0 +1,24 @@
+{{> post-info post}}
+
+{{#if loggedIn}}
+<section>
+<div class="card">
+   <h4 class="card-header text-uppercase">Add New Comment</h4>
+    <form id="comment-form" class="card-body">
+      <div>
+        <label class="form-label" for="comment-body">Comment</label>
+        <textarea class="form-input" type="text" id="comment" name="comment-body" autofocus="true"></textarea>
+      </div>
+      <button type="submit" class="btn-login">Submit</button>        
+    </form>
+    <a href="/"><ion-icon name="arrow-back-outline"></ion-icon>Back</a>
+  </div>  
+  </section>
+  {{/if}}
+  
+{{> comments post.comments}}
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

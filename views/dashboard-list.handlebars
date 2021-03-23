@@ -1,0 +1,27 @@
+{{#if posts.length}}
+<section>
+  <h2>Your Posts</h2>
+  <ul>
+    {{#each posts as | post|}}
+    <li> 
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">     
+        <div class="card">
+           <h3 class="card-header">{{title}}
+          <span class="head-style">Posted by {{user.username}} on {{format_date created_at}}</span>
+            </h3>
+      </div>
+    </a>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}
+
+<div style="text-align: center;">
+  <a href="/dashboard">
+<button type="button" class="btn-post"><ion-icon name="add-outline"></ion-icon>New Post</button>
+  </a>
+</div>
+
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+

@@ -1,0 +1,22 @@
+
+{{#each this}}
+<section>
+<div class="card">
+   <h6 class="card-header">
+     <span class="head-style">{{user.username}} commented on {{format_date created_at}}</span>     
+     COMMENTS</h6>
+    <form class="card-body">
+      <div class="comments">
+         {{comment_text}}
+      </div class="comments">         
+    </form>    
+</div>  
+</section>
+   {{/each}}
+   {{#if this}}
+ <a href="/"><ion-icon name="arrow-back-outline"></ion-icon>Back</a>
+ {{/if}}
+
+
+
+
