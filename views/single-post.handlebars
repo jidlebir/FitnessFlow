@@ -28,6 +28,15 @@
 </form>
 {{!-- ---------------------------------------------------------- --}}
 
+<div> 
+  <p> Upvote </p>
+   {{post.vote_count}} {{format_plural "point" post.vote_count}} by you on {{format_date post.created_at}}
+</div>
+<div> 
+  <p> Downvote </p>
+   {{post.down_vote_count}} {{format_plural "point" post.down_vote_count}} by you on {{format_date post.created_at}}
+</div>
+
 
    
   {{/if}}
