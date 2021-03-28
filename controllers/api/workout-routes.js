@@ -14,6 +14,16 @@ router.get('/', (req, res) => {
       'workout_date',
       'workout_title',      
     ],
+
+    // UNDEFINED **THIS IS MY ISSUE**//
+
+    // include: [
+    //   {
+    //     model: Exercise,
+    //     attributes: [exercise_title],
+        
+    //   },
+    // ]
   })
     .then(dbWorkoutData => res.json(dbWorkoutData))
     .catch(err => {
@@ -56,9 +66,35 @@ router.post('/', (req, res) => {
     });
 });
 
+router.put('/:id',(req, res) => {
+  Workout.update(
+    {
+      workout_title: req.body.workout_title,
+      workout_date: req.body.workout_date
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  )
+    .then(dbPostData => {
+      if (!dbWorkoutData) {
+        res.status(404).json({ message: 'No Workout found with this id' });
+        return;
+      }
+      res.json(dbWorkoutData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 
 // DELETE WORKOUT //
 router.delete('/:id',(req, res) => {
+  console.log("===============workout DELETE=========="); 
   Workout.destroy({
     where: {
       id: req.params.id
