@@ -1,4 +1,6 @@
-{{#if workout.length}}
+<h1>workout</h1>
+
+{{#if workouts.length}}
 <section>
   <h2>Your workouts</h2>
   <ul>
@@ -7,16 +9,38 @@
            
         <div class="card">
            <h3 class="card-header">{{workout_title}}
-               <P>{{exercise.exercise_title}}</P>
-          <span class="head-style">Posted by {{user.username}} on {{format_date created_at}}</span>
+               
+          <span class="head-style">Workout date {{workout_date}}</span>
             </h3>
+            <div>
+              <ul>
+              {{#each exercises}}
+              <li>
+              {{exercise_title}}
+              </li>
+              {{/each}}
+              </ul>
+            </div>
       </div>
-    <
+    
     </li>
     {{/each}}
   </ul>
 </section>
 {{/if}}
+
+<p>Work out drop down</p>
+<div>
+  <select>
+    {{#each workouts}}
+    <option>      
+      {{workout_title}}      
+    </option>
+    {{/each}}
+  </select>
+</div>
+
+
 
 <div style="text-align: center;">
   <a href="/dashboard">
