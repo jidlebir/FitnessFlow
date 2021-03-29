@@ -19,43 +19,56 @@ router.get('/', (req, res) => {
 
     include: [
       {
-        model: Exercise,      
-        
+        model: Exercise,
+        attributes: ["exercise_title"]        
       },
-    ]
+     ]
 
     
   })
-    // .then(dbWorkoutData => res.json(dbWorkoutData))
-    .then(dbWorkoutData => {
-      console.log(dbWorkoutData[0])
-      //dive into the object and test properties til we see exactly what we want.
-      console.log("exercise title:", dbWorkoutData[0].exercises )
-      var myExampleObject = {
-        id: dbWorkoutData[0].id,
-        workout_date: dbWorkoutData[0].workout_date,
-        workout_title: dbWorkoutData[0].workout_title,
-        exercise_title: dbWorkoutData[0].exercises.dataValues.exercise_title,
-      }
-      //Generalizeds myExampleObject to return an ARRAY of objects to use in front end.
-      var myArray = dbWorkoutData.map((element, i)=>{
-        var myObject = {
-          id: element.id,
-          workout_date: element.workout_date,
-          workout_title: element.workout_title,
-          exercise_title: element.exercises.dataValues.exercise_title,
-        }
-        return myObject
-      })
-      // res.json(dbWorkoutData)
-      res.json(myArray)
-    })
-    
+    .then(dbWorkoutData => res.json(dbWorkoutData))
+    // ----------------------------------------------//
+    // .then(dbWorkoutData => {
+    //   console.log(dbWorkoutData[0])
+    //   //dive into the object and test properties til we see exactly what we want.
+    //   console.log("exercise title:", dbWorkoutData[0].exercises )
+    //   var myExampleObject = {
+    //     id: dbWorkoutData[0].id,
+    //     workout_date: dbWorkoutData[0].workout_date,
+    //     workout_title: dbWorkoutData[0].workout_title,
+    //     exercise_title: dbWorkoutData[0].exercises.dataValues.exercise_title,
+    //   }
+    //   //Generalizeds myExampleObject to return an ARRAY of objects to use in front end.
+    //   var myArray = dbWorkoutData.map((element, i)=>{
+    //     var myObject = {
+    //       id: element.id,
+    //       workout_date: element.workout_date,
+    //       workout_title: element.workout_title,
+    //       exercise_title: element.exercises.dataValues.exercise_title,
+    //     }
+    //     return myObject
+    //   })
+    //   // res.json(dbWorkoutData)
+    //   res.json(myArray)
+    // })
+    //-----------------------------------------------------//
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
+    // .then(dbWorkoutData => {
+    //   console.log(dbWorkoutData);
+    //   const workouts = dbWorkoutData.map(workout => workout.get({ plain: true }));
+    //   res.render('workout-list', { workouts, loggedIn: true });
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    //   res.status(500).json(err);
+    // });
+
 });
+
+
 
 // GET ONE //
 router.get('/:id', (req, res) => {
