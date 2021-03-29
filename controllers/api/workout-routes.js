@@ -14,17 +14,14 @@ router.get('/', (req, res) => {
       'workout_date',
       'workout_title',      
     ],
-
-    //UNDEFINED **THIS IS MY ISSUE**//
-
     include: [
       {
         model: Exercise,
-        attributes: ["exercise_title"]        
+        attributes: [
+          ["exercise_title"],          
+        ]       
       },
-     ]
-
-    
+     ]    
   })
     .then(dbWorkoutData => res.json(dbWorkoutData))
     // ----------------------------------------------//
