@@ -1,7 +1,10 @@
-<ul class="post-list">
+
+<h2>Community Feed</h2>
+<div class="ui relaxed divided list">
   {{#each posts as |post| }}
-  <li>
-    {{> post-info post }}    
-  </li>
+  <div class="item">
+    {{> post-info post }} 
+    
+  </div>
   {{/each}}
-</ul>
+</div>

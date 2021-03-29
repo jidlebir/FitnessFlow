@@ -1,27 +1,66 @@
+<div class="ui grid">
+  <div class="eight wide column">
 {{#if posts.length}}
 <section>
   <h2>Your Posts</h2>
+  <div class="ui feed">
   <ul>
     {{#each posts as | post|}}
     <li> 
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">     
-        <div class="card">
+      <div class="summary">
+        <a class="user">
+          {{user.username}}
+        </a> 
+        <div class="date">
+          {{format_date created_at}}
+        </div>
+      </div>
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">
+         
+        
+          <div class="card">
            <h3 class="card-header">{{title}}
           <span class="head-style">Posted by {{user.username}} on {{format_date created_at}}</span>
             </h3>
-      </div>
+          </div>
     </a>
     </li>
     {{/each}}
   </ul>
+  </div>
 </section>
 {{/if}}
 
-<div style="text-align: center;">
-  <a href="/dashboard">
-<button type="button" class="btn-post"><ion-icon name="add-outline"></ion-icon>New Post</button>
-  </a>
+
+
+    <div style="text-align: center;">
+      <a href="/dashboard">
+    <button type="button" class="btn-post"><ion-icon name="add-outline"></ion-icon>New Post</button>
+      </a>
+    </div>
+  </div>
+  <div class="eight wide column">
+    <h2>Your Workouts</h2>
+    <div class="ui simple dropdown">
+      <input type="hidden" name="muscle">
+      <i class="dropdown icon"></i>
+      <div class="default text">Muscle Group</div>
+      <div class="menu">
+        <a class="item" data-value="0">Abs</a>
+        <a class="item" data-value="1">Back</a>
+        <a class="item" data-value="2">Legs</a>
+        <a class="item" data-value="3">Chest</a>
+        <a class="item" data-value="4">Cardio</a>
+        <a class="item" data-value="5">Arms</a>
+      </div>
+    </div>
+  </div>
 </div>
 
+<script> 
+     $(document).ready(function(){
+          $('.ui.dropdown') .dropdown();
+    });
+    </script>
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 

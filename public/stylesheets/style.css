@@ -1,9 +1,9 @@
 :root {
-  --primary: #ccdad1;
-  --secondary: #9caea9;
-  --tertiary: #788585;
-  --light-dark: #6f6866;
-  --dark: #38302e;
+  --primary: #1C2321;
+  --secondary: #2E5EAA;
+  --tertiary: #F7F4F3;
+  --dark: #47A8BD;
+  --light: #A0AAB2;
   --border-radius: .3rem;
 }
 
@@ -197,11 +197,23 @@ margin-bottom: 3%;
   border-radius: var(--border-radius);
 }
 /* CARDS */
+
+
 .card {
   margin: 0 0 10px 0;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
 }
+
+.content {
+  margin: 10px;
+  border: 3px solid var(--dark);
+  border-radius: var(--border-radius);
+  max-width: 100%;
+}
+
+
+
 
 .card-header {
   color: var(--primary);
@@ -560,3 +572,6 @@ margin-bottom: 3%;
   }
 }
 
+.ui.three.column.grid {
+padding: 20px;
+}
