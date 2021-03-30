@@ -7,7 +7,7 @@
   <ul>
     {{#each workouts as | workout|}}
     <li> 
-           
+      <a href="workout-list/edit/{{workout.id}}" class="edit-link">           
         <div class="card">
            <h3 class="card-header">{{workout_title}}
                
@@ -23,6 +23,7 @@
               </ul>
             </div>
       </div>
+      </a>
     
     </li>
     {{/each}}
@@ -45,21 +46,7 @@
   </div>
 </div>
 
-{{!-- <p>Work out drop down</p>
-<div>
-  <select id="workout_id">
-    {{#each workouts as | workout |}}
-    {{#each exercises}}
-    <option value="{{id}}">      
-      {{workout.workout_title}} - {{exercise_title}}
-    </option>
-    {{/each}}
-    {{/each}}
-  </select>
-</div> --}}
-
-
-
+{{workout_title}}
 
 <div style="text-align: center;">
   <a href="/dashboard">

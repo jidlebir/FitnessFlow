@@ -15,7 +15,7 @@
           {{format_date created_at}}
         </div>
       </div>
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">       
+      <a href="/dashboard-list/edit/{{post.id}}" class="edit-link">       
           <div class="card">
            <h3 class="card-header">{{title}}
           <span class="head-style">Posted by {{user.username}} on {{format_date created_at}}</span>
@@ -55,8 +55,6 @@
     </div>
   </div>
 </div>
-
-{{>test}}
 
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 

@@ -122,7 +122,4 @@ Exercise.belongsTo(Workout, {
 
 
 
-
-
-
 module.exports = { User, Post, Vote, Downvote, Comment, Workout, Exercise };
