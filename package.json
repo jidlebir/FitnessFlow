@@ -1,21 +1,35 @@
 {
-  "name": "mvc-challenge",
+  "name": "fitnessflow",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "![license](https://img.shields.io/badge/license-MIT-critical?./license/MIT)",
+  "main": "Recording.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
+    "express-session": "^1.17.1",
+    "fs": "^0.0.1-security",
+    "multer": "^1.4.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/a7063p/week-14-challenge.git"
+    "url": "git+https://github.com/jidlebir/FitnessFlow.git"
   },
-  "author": "Pennucci",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/a7063p/week-14-challenge/issues"
+    "url": "https://github.com/jidlebir/FitnessFlow/issues"
   },
+<<<<<<< HEAD
   "homepage": "https://github.com/a7063p/week-14-challenge#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -28,4 +42,7 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.5.1"
   }
+=======
+  "homepage": "https://github.com/jidlebir/FitnessFlow#readme"
+>>>>>>> develop
 }

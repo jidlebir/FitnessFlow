@@ -1,12 +1,15 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+
+
 // create our Post model
 class Post extends Model {
   static upvote(body, models) {
     return models.Vote.create({
       user_id: body.user_id,
       post_id: body.post_id
-    }).then(() => {
+     })
+    .then(() => {
       return Post.findOne({
         where: {
           id: body.post_id
@@ -15,7 +18,41 @@ class Post extends Model {
           'id',
           'content',
           'title',
-          'created_at'
+          'created_at',
+          [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count'],
+          [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE post.id = downvote.post_id)'), 'downvote_count']
+         
+        ],
+        include: [
+          {
+            model: models.Comment,
+            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            include: {
+              model: models.User,
+              attributes: ['username']
+            }
+          }
+        ]
+      });
+    });
+  }
+  static downvote(body, models) {
+    return models.Downvote.create({
+      user_id: body.user_id,
+      post_id: body.post_id
+     })
+     .then(() => {
+      return Post.findOne({
+        where: {
+          id: body.post_id
+        },
+        attributes: [
+          'id',
+          'content',
+          'title',
+          'created_at',
+          [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count'],
+          [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE post.id = downvote.post_id)'), 'downvote_count']
          
         ],
         include: [

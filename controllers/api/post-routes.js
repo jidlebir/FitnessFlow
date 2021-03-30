@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Comment } = require('../../models');
+const { Post, User, Comment, Vote, Downvote } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all users
@@ -11,7 +11,9 @@ router.get('/', (req, res) => {
       'id',
       'content',
       'title',
-      'created_at',      
+      'created_at',  
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count'],    
+      [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE post.id = downvote.post_id)'), 'down_vote_count']    
     ],
     include: [
       {
@@ -44,7 +46,9 @@ router.get('/:id', (req, res) => {
       'id',
       'content',
       'title',
-      'created_at',      
+      'created_at', 
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count'],
+      [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE post.id = downvote.post_id)'), 'down_vote_count']       
     ],
     include: [
       {
@@ -81,6 +85,25 @@ router.post('/', withAuth, (req, res) => {
     user_id: req.session.user_id
   })
     .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put('/upvote', withAuth, (req, res) => {
+  // custom static method created in models/Post.js
+  Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+    .then(updatedVoteData => res.json(updatedVoteData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+router.put('/downvote', withAuth, (req, res) => {
+  // custom static method created in models/Post.js
+  Post.downvote({ ...req.body, user_id: req.session.user_id }, { Downvote, Comment, User })
+    .then(updatedDownvoteData => res.json(updatedDownvoteData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);

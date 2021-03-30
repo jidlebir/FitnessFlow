@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 <div class="ui stackable grid container">
   <div class="column">
@@ -19,5 +20,17 @@
       </div>
     </div>
   </div>
+=======
+<article class="post">  
+ <a href="/post/{{id}}">
+  <div class="card">  
+    <h3 class="card-header">{{title}}
+      <span class="head-style">Posted by {{user.username}} on {{format_date created_at}} <br>{{comments.length}} {{format_plural "comment" comments.length}}</span>
+      {{!-- {{vote_count}} --}}
+    </h3>
+      <div>
+        {{content}}
+      </div>      
+>>>>>>> develop
   </div>
 </div>

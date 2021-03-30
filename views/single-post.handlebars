@@ -14,11 +14,49 @@
     <a href="/"><ion-icon name="arrow-back-outline"></ion-icon>Back</a>
   </div>  
   </section>
+  {{!-- ----------------------------------------------------- --}}
+  <form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add comment</button>
+    <button id="upvote "type="button" class="upvote-btn">upvote</button>
+    <button type="button" class="downvote-btn">downvote</button>
+  </div>
+</form>
+{{!-- ---------------------------------------------------------- --}}
+
+<div> 
+  <p> Upvote </p>
+   {{post.vote_count}} {{format_plural "point" post.vote_count}} by you on {{format_date post.created_at}}
+</div>
+<div> 
+  <p> Downvote </p>
+   {{post.down_vote_count}} {{format_plural "point" post.down_vote_count}} by you on {{format_date post.created_at}}
+</div>
+
+<div>
+  <p>work out</p>
+  {{workout.workout_title}}
+</div>
+
+
+
+   
   {{/if}}
   
 {{> comments post.comments}}
 
 {{#if loggedIn}}
+
+
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/upvote.js"></script>
+<script src="/javascript/downvote.js"></script>
+
+
+
 {{/if}}
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
