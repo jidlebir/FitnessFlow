@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Exercise,
-        attributes: ["exercise_title"]        
+        attributes: ["exercise_title","id"]        
       },
      ]
 

@@ -31,7 +31,7 @@
 
 <p>Work out drop down</p>
 <div>
-  <select>
+  <select id="workout_id">
     {{#each workouts}}
     <option>      
       {{workout_title}}      
@@ -40,6 +40,14 @@
   </select>
 </div>
 
+<div>
+  <label>Choose exercise</label>
+  <select id="exercise_id">
+    {{#each workouts.0.exercises}}
+    <option>{{exercise_title}}</option>
+    {{/each}}
+  </select>
+</div>
 
 
 <div style="text-align: center;">
@@ -48,4 +56,5 @@
   </a>
 </div>
 
+<script src="/javascript/workout.js"></script>
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
