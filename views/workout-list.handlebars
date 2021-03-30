@@ -1,5 +1,6 @@
 <h1>workout</h1>
 
+
 {{#if workouts.length}}
 <section>
   <h2>Your workouts</h2>
@@ -29,7 +30,22 @@
 </section>
 {{/if}}
 
-<p>Work out drop down</p>
+<div class="card">
+  <h3 class="card-header">Add Your Work Out</h3>
+  <div>
+    <select id="workout_id">
+      {{#each workouts as | workout |}}
+      {{#each exercises}}
+      <option value="{{id}}">      
+        {{workout.workout_title}} - {{exercise_title}}
+      </option>
+      {{/each}}
+      {{/each}}
+    </select>
+  </div>
+</div>
+
+{{!-- <p>Work out drop down</p>
 <div>
   <select id="workout_id">
     {{#each workouts as | workout |}}
@@ -40,16 +56,9 @@
     {{/each}}
     {{/each}}
   </select>
-</div>
-
-{{!-- <div>
-  <label>Choose exercise</label>
-  <select id="exercise_id">
-    {{#each workouts.0.exercises}}
-    <option>{{exercise_title}}</option>
-    {{/each}}
-  </select>
 </div> --}}
+
+
 
 
 <div style="text-align: center;">

@@ -15,9 +15,7 @@
           {{format_date created_at}}
         </div>
       </div>
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">
-         
-        
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">       
           <div class="card">
            <h3 class="card-header">{{title}}
           <span class="head-style">Posted by {{user.username}} on {{format_date created_at}}</span>
@@ -39,7 +37,9 @@
 
 
   <div class="eight wide column">
+    <a href='/workout-list'>
     <h2>Your Workouts</h2>
+    </a>
     <div class="ui simple dropdown">
       <input type="hidden" name="muscle">
       <i class="dropdown icon"></i>
@@ -56,8 +56,7 @@
   </div>
 </div>
 
-
-
+{{>test}}
 
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 

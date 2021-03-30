@@ -1,0 +1,28 @@
+{{#if workouts.length}}
+<section>
+  <h2>Your workouts</h2>
+  <ul>
+    {{#each workouts as | workout|}}
+    <li> 
+           
+        <div class="card">
+           <h3 class="card-header">{{workout_title}}
+               
+          <span class="head-style">Workout date {{workout_date}}</span>
+            </h3>
+            <div>
+              <ul>
+              {{#each exercises}}
+              <li>
+              {{exercise_title}}
+              </li>
+              {{/each}}
+              </ul>
+            </div>
+      </div>
+    
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}

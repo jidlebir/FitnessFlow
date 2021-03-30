@@ -31,10 +31,12 @@ router.get('/', withAuth, (req, res) => {
       {
         model: User,
         attributes: ['username']
-      }
+      },
+      
     ]
   })
     .then(dbPostData => {
+      console.log('====dash-list==', dbPostData);
       const posts = dbPostData.map(post => post.get({ plain: true }));
       res.render('dashboard-list', { posts, loggedIn: true });
     })
@@ -66,11 +68,12 @@ router.get('/edit/:id', withAuth, (req, res) => {
       {
         model: User,
         attributes: ['username']
-      }
+      },   
     ]
   })
     .then(dbPostData => {
       if (dbPostData) {
+        console.log("****", dbPostData);
         const post = dbPostData.get({ plain: true });
         
         res.render('edit-post', {

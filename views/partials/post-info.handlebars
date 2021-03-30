@@ -3,11 +3,11 @@
  <a href="/post/{{id}}">
   <div class="card">  
     <h3 class="card-header">{{title}}
-      <span class="head-style">Posted by {{user.username}} on {{format_date created_at}} <br>{{comments.length}} {{format_plural "comment" comments.length}}</span>
-      {{!-- {{vote_count}} --}}
+      <span class="head-style">Posted by {{user.username}} on {{format_date created_at}} <br>{{comments.length}} {{format_plural "comment" comments.length}}</span>      
     </h3>
       <div>
-        {{content}}
+        {{content}}        
       </div>      
   </div>
-</div>
+ </a>
+</article>
