@@ -32,22 +32,24 @@
 <p>Work out drop down</p>
 <div>
   <select id="workout_id">
-    {{#each workouts}}
-    <option>      
-      {{workout_title}}      
+    {{#each workouts as | workout |}}
+    {{#each exercises}}
+    <option value="{{id}}">      
+      {{workout.workout_title}} - {{exercise_title}}
     </option>
+    {{/each}}
     {{/each}}
   </select>
 </div>
 
-<div>
+{{!-- <div>
   <label>Choose exercise</label>
   <select id="exercise_id">
     {{#each workouts.0.exercises}}
     <option>{{exercise_title}}</option>
     {{/each}}
   </select>
-</div>
+</div> --}}
 
 
 <div style="text-align: center;">

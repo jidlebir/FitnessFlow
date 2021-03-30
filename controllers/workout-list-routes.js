@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   console.log('========workout========');
 
   Workout.findAll({
+  
     attributes: [
       'id',
       'workout_date',
@@ -17,7 +18,10 @@ router.get('/', (req, res) => {
      include: [
       {
         model: Exercise,
-        attributes: ["exercise_title"]        
+        attributes: [
+          "exercise_title",
+          "id"
+        ]        
       },
      ]    
   })  
