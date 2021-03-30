@@ -1,19 +1,22 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Workout, Exercise} = require('../models');
-//const withAuth = require('../../utils/auth');
+const { Workout, Exercise, User} = require('../models');
+const withAuth = require('../utils/auth');
 
 
 // GET ALL //
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
   console.log('========workout========');
 
   Workout.findAll({
+    where: {
+      user_id: req.session.user_id
+    },
   
     attributes: [
-      'id',
-      'workout_date',
-      'workout_title',      
+      'id',     
+      'workout_title',
+      "user_id"      
     ],
      include: [
       {
@@ -23,10 +26,17 @@ router.get('/', (req, res) => {
           "id"
         ]        
       },
+      {
+        model: User,
+        attributes: [ 
+          'id', 
+          'username'
+        ]        
+      }
      ]    
   })  
     .then(dbWorkoutData => {
-      console.log('test db', dbWorkoutData[0]);
+      console.log('+=+=+=test db+=+=+=', dbWorkoutData);
       const workouts = dbWorkoutData.map(workout => workout.get({ plain: true }));
       res.render('workout-list', { workouts, loggedIn: true });
     })
