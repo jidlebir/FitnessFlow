@@ -36,9 +36,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Post.findOne({
+  Profile.findOne({
     where: {
-      user_id: req.params.user_id
+      id: req.params.id
     },
     attributes: [
       'id',
@@ -58,7 +58,7 @@ router.get('/:id', (req, res) => {
   })
     .then(dbProfileData => {
       if (!dbProfileData) {
-        res.status(404).json({ message: 'No post found with this id' });
+        res.status(404).json({ message: 'No profile found with this id' });
         return;
       }
       res.json(dbProfileData);
@@ -69,7 +69,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => { 
+router.post('/', (req, res) => { 
   Profile.create({
     name: req.body.name,
     age: req.body.age,
@@ -86,25 +86,26 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', (req, res) => {
   Profile.update({
     name: req.body.name,
     age: req.body.age,
     height: req.body.height,
     weight: req.body.weight,
     favorite_workout: req.body.favorite_workout,
+    
     },
     {
       where: {
         id: req.params.id
       }
     })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+    .then(dbProfileData => {
+      if (!dbProfileData) {
+        res.status(404).json({ message: 'No profile found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbProfileData);
     })
     .catch(err => {
       console.log(err);
@@ -112,19 +113,19 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id',(req, res) => {
   console.log('id', req.params.id);
-  Post.destroy({
+  Profile.destroy({
     where: {
       id: req.params.id
     }
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+    .then(dbProfileData => {
+      if (!dbProfileData) {
+        res.status(404).json({ message: 'No profile found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbProfileData);
     })
     .catch(err => {
       console.log(err);
