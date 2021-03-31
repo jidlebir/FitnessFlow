@@ -1,18 +1,19 @@
 <div class="ui grid">
-  <div class="eight wide column">
+  <div class="sixteen wide column">
+  <h2>Your Workout Posts</h2>
 {{#if posts.length}}
 <section>
-  <h2>Your Posts</h2>
+  
   <div class="ui feed">
   <ul>
     {{#each posts as | post|}}
     <li> 
       <div class="summary">
         <a class="user">
-          {{user.username}}
+          Posted By: {{user.username}}
         </a> 
         <div class="date">
-          {{format_date created_at}}
+          Posted On: {{format_date created_at}}
         </div>
       </div>
       <a href="/dashboard-list/edit/{{post.id}}" class="edit-link">       
@@ -30,31 +31,50 @@
 {{/if}}
     <div style="text-align: center;">
       <a href="/dashboard">
-    <button type="button" class="btn-post"><ion-icon name="add-outline"></ion-icon>New Post</button>
+    <button type="button" class="btn-post"><ion-icon name="add-outline"></ion-icon>New Workout Post</button>
       </a>
     </div>
   </div>
 
 
-  <div class="eight wide column">
+  {{!-- <div class="eight wide column">
     <a href='/workout-list'>
     <h2>Your Workouts</h2>
     </a>
-    <div class="ui simple dropdown">
-      <input type="hidden" name="muscle">
-      <i class="dropdown icon"></i>
-      <div class="default text">Muscle Group</div>
-      <div class="menu">
-        <a class="item" data-value="0">Abs</a>
-        <a class="item" data-value="1">Back</a>
-        <a class="item" data-value="2">Legs</a>
-        <a class="item" data-value="3">Chest</a>
-        <a class="item" data-value="4">Cardio</a>
-        <a class="item" data-value="5">Arms</a>
+    {{#if workouts.length}}
+  </div>
+  <ul>
+    {{#each workouts as | workout|}}
+    <li> 
+      <a href="workout-list/edit/{{workout.id}}" class="edit-link">           
+        <div class="card">
+           <h3 class="card-header">{{workout_title}}
+               
+          <span class="head-style">Workout date {{workout_date}}</span>
+            </h3>
+            <div>
+              <ul>
+              {{#each exercises}}
+              <li>
+              {{exercise_title}}
+              </li>
+              {{/each}}
+              </ul>
+            </div>
       </div>
+      </a>
+    
+    </li>
+    {{/each}}
+  </ul>
+{{/if}}
+<div style="text-align: center;">
+      <a href="/dashboard">
+    <button type="button" class="btn-post"><ion-icon name="add-outline"></ion-icon>Add Workout</button>
+      </a>
     </div>
   </div>
-</div>
+</div> --}}
 
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 
