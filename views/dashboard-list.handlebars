@@ -1,27 +1,80 @@
+<div class="ui grid">
+  <div class="sixteen wide column">
+  <h2>Your Workout Posts</h2>
 {{#if posts.length}}
 <section>
-  <h2>Your Posts</h2>
+  
+  <div class="ui feed">
   <ul>
     {{#each posts as | post|}}
     <li> 
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">     
-        <div class="card">
+      <div class="summary">
+        <a class="user">
+          Posted By: {{user.username}}
+        </a> 
+        <div class="date">
+          Posted On: {{format_date created_at}}
+        </div>
+      </div>
+      <a href="/dashboard-list/edit/{{post.id}}" class="edit-link">       
+          <div class="card">
            <h3 class="card-header">{{title}}
           <span class="head-style">Posted by {{user.username}} on {{format_date created_at}}</span>
             </h3>
-      </div>
+          </div>
     </a>
     </li>
     {{/each}}
-  </ul>
+  </ul> 
+
 </section>
 {{/if}}
+    <div style="text-align: center;">
+      <a href="/dashboard">
+    <button type="button" class="btn-post"><ion-icon name="add-outline"></ion-icon>New Workout Post</button>
+      </a>
+    </div>
+  </div>
 
+
+  {{!-- <div class="eight wide column">
+    <a href='/workout-list'>
+    <h2>Your Workouts</h2>
+    </a>
+    {{#if workouts.length}}
+  </div>
+  <ul>
+    {{#each workouts as | workout|}}
+    <li> 
+      <a href="workout-list/edit/{{workout.id}}" class="edit-link">           
+        <div class="card">
+           <h3 class="card-header">{{workout_title}}
+               
+          <span class="head-style">Workout date {{workout_date}}</span>
+            </h3>
+            <div>
+              <ul>
+              {{#each exercises}}
+              <li>
+              {{exercise_title}}
+              </li>
+              {{/each}}
+              </ul>
+            </div>
+      </div>
+      </a>
+    
+    </li>
+    {{/each}}
+  </ul>
+{{/if}}
 <div style="text-align: center;">
-  <a href="/dashboard">
-<button type="button" class="btn-post"><ion-icon name="add-outline"></ion-icon>New Post</button>
-  </a>
-</div>
+      <a href="/dashboard">
+    <button type="button" class="btn-post"><ion-icon name="add-outline"></ion-icon>Add Workout</button>
+      </a>
+    </div>
+  </div>
+</div> --}}
 
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 

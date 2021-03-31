@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment } = require('../models');
+const { Post, User, Comment, Vote, Downvote, Workout, Exercise } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all posts for dashboard
@@ -15,7 +15,9 @@ router.get('/', withAuth, (req, res) => {
       'id',
       'content',
       'title',
-      'created_at',      
+      'created_at', 
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count'],
+      [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE post.id = downvote.post_id)'), 'down_vote_count']     
     ],
     include: [
       {
@@ -29,10 +31,12 @@ router.get('/', withAuth, (req, res) => {
       {
         model: User,
         attributes: ['username']
-      }
+      },
+      
     ]
   })
     .then(dbPostData => {
+      console.log('====dash-list==', dbPostData);
       const posts = dbPostData.map(post => post.get({ plain: true }));
       res.render('dashboard-list', { posts, loggedIn: true });
     })
@@ -48,7 +52,9 @@ router.get('/edit/:id', withAuth, (req, res) => {
       'id',
       'content',
       'title',
-      'created_at',    
+      'created_at', 
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count'],
+      [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE post.id = downvote.post_id)'), 'down_vote_count']   
     ],
     include: [
       {
@@ -62,11 +68,12 @@ router.get('/edit/:id', withAuth, (req, res) => {
       {
         model: User,
         attributes: ['username']
-      }
+      },   
     ]
   })
     .then(dbPostData => {
       if (dbPostData) {
+        console.log("****", dbPostData);
         const post = dbPostData.get({ plain: true });
         
         res.render('edit-post', {
@@ -82,4 +89,10 @@ router.get('/edit/:id', withAuth, (req, res) => {
     });
 });
 
+
+
 module.exports = router;
+
+
+
+

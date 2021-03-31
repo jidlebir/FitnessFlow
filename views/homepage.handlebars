@@ -1,7 +1,14 @@
-<ul class="post-list">
-  {{#each posts as |post| }}
-  <li>
-    {{> post-info post }}    
-  </li>
-  {{/each}}
-</ul>
+
+<h2 class="">Community Feed</h2>
+
+<div class="ui relaxed divided list">
+  {{#each posts as |post| }}  
+  <div class="item">    
+    {{> post-info post }}          
+  </div> 
+  <ion-icon name="thumbs-up"></ion-icon> {{post.vote_count}}  <ion-icon name="thumbs-down"></ion-icon>{{post.down_vote_count}} 
+   {{/each}}  
+</div>
+
+
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

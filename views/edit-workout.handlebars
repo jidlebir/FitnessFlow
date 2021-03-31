@@ -1,0 +1,55 @@
+<section>
+
+
+  
+<div class="card">
+   <h4 class="card-header text-uppercase">Edit Workout</h4>
+    <form id="edit-post-form" class="card-body">
+      <div>
+        <label class="form-label" for="workout-title">Workout</label>
+        <input class="form-input-login"type="text" id="workout-title" name="workout-title" autofocus="true"value="{{workout.workout_title}}"/>    
+          <div class="card">          
+
+       {{workout.id}}
+       {{workout.workout_title}}
+
+      {{#each workout}}
+      {{#each exercises}}
+      <option value="{{id}}">      
+        {{workout.workout_title}} - {{exercise_title}}
+      </option>
+      {{/each}}
+      {{/each}}
+
+
+<div class="card">
+  <h3 class="card-header">Add Your Work Out</h3>
+  <div>
+    <select id="workout_id">
+      {{#each workout as | workout |}}
+      {{#each exercises}}
+      <option value="{{id}}">      
+        {{workout.workout_title}} - {{exercise_title}}
+      </option>
+      {{/each}}
+      {{/each}}
+    </select>
+  </div>
+</div>
+       
+       
+      
+      <button type="submit" id="edit-post-btn" class="btn-login">Update Post</button>        
+      <button type="submit" id="delete-post-btn" class="btn-login">Delete</button>        
+    </form>
+    <a href="/dashboard-list"><ion-icon name="arrow-back-outline"></ion-icon>Back</a>
+  </div>  
+
+
+ 
+  </section>
+  
+
+<script src="/javascript/edit-workout.js"></script>
+<script src="/javascript/delete-workout.js"></script>
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

@@ -1,20 +1,21 @@
 <section>
 <div class="card">
-   <h4 class="card-header text-uppercase">Edit Post</h4>
+   <h4 class="card-header text-uppercase">Edit Workout Post</h4>
     <form id="edit-post-form" class="card-body">
       <div>
-        <label class="form-label" for="post-title">Title</label>
+        <label class="form-label" for="post-title">Post Title</label>
         <input class="form-input-login"type="text" id="post-title" name="post-title" autofocus="true"value="{{post.title}}"/>    
 
-        <label class="form-label" for="post-content">Content</label>
+        <label class="form-label" for="post-content">Workout Details</label>
         <textarea class="form-input" type="text" id="post-content" name="post-content">{{post.content}}</textarea>
       </div>
       
       <button type="submit" id="edit-post-btn" class="btn-login">Update Post</button>        
-      <button type="submit" id="delete-post-btn" class="btn-login">Delete</button>        
+      <button type="submit" id="delete-post-btn" class="btn-login">Delete Post</button>        
     </form>
     <a href="/dashboard-list"><ion-icon name="arrow-back-outline"></ion-icon>Back</a>
   </div>  
+  
   </section>
   
 

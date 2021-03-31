@@ -1,9 +1,9 @@
 :root {
-  --primary: #ccdad1;
-  --secondary: #9caea9;
-  --tertiary: #788585;
-  --light-dark: #6f6866;
-  --dark: #38302e;
+  --primary: #1C2321;
+  --secondary: #2E5EAA;
+  --tertiary: #F7F4F3;
+  --dark: #47A8BD;
+  --light: #A0AAB2;
   --border-radius: .3rem;
 }
 
@@ -197,15 +197,27 @@ margin-bottom: 3%;
   border-radius: var(--border-radius);
 }
 /* CARDS */
+
+
 .card {
-  margin: 0 0 10px 0;
+  margin: 90px;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
 }
 
+.content {
+  margin: 10px;
+  border: 3px solid var(--dark);
+  border-radius: var(--border-radius);
+  max-width: 100%;
+}
+
+
+
+
 .card-header {
   color: var(--primary);
-  background-color: var(--dark);    
+  background-color: var(--light);    
   padding: .75%;
   border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
 }
@@ -231,7 +243,7 @@ margin-bottom: 3%;
   padding: 3%;
   margin: 5px 0;
   font-size: 1.2rem;
-  border: 2px solid var(--light-dark);
+  /* border: 2px solid var(--light-dark); */
   border-radius: var(--border-radius);
 }
 .form-input-login {
@@ -239,7 +251,7 @@ margin-bottom: 3%;
   padding: 5px;
   margin: 5px 0;
   font-size: 1.2rem;
-  border: 2px solid var(--light-dark);
+  /* border: 2px solid var(--light-dark); */
   border-radius: var(--border-radius);
 }
 
@@ -560,3 +572,6 @@ margin-bottom: 3%;
   }
 }
 
+.ui.three.column.grid {
+padding: 20px;
+}

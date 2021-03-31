@@ -9,16 +9,35 @@
         <label class="form-label" for="comment-body">Comment</label>
         <textarea class="form-input" type="text" id="comment" name="comment-body" autofocus="true"></textarea>
       </div>
-      <button type="submit" class="btn-login">Submit</button>        
+      <button type="submit" class="btn-login">Submit</button>
+      <button id="upvote "type="button" class="upvote-btn"><ion-icon name="thumbs-up"></ion-icon></button>
+      <button type="button" class="downvote-btn"><ion-icon name="thumbs-down"></ion-icon></button>
+      <div>
+          {{post.vote_count}} Liked by you on {{format_date post.created_at}}<br>
+          {{post.down_vote_count}} Disliked by you on {{format_date post.created_at}}
+      </div>
+            
     </form>
     <a href="/"><ion-icon name="arrow-back-outline"></ion-icon>Back</a>
   </div>  
   </section>
+
+{{!-- ---------------------------------------------------------- --}}
+
+
+   
   {{/if}}
   
 {{> comments post.comments}}
 
 {{#if loggedIn}}
+
+
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/upvote.js"></script>
+<script src="/javascript/downvote.js"></script>
+
+
+
 {{/if}}
 <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

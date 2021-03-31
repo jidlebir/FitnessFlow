@@ -1,0 +1,58 @@
+<h1>workout</h1>
+
+
+{{#if workouts.length}}
+<section>
+  <h2>Your workouts</h2>
+  <ul>
+    {{#each workouts as | workout|}}
+    <li> 
+      <a href="workout-list/edit/{{workout.id}}" class="edit-link">           
+        <div class="card">
+           <h3 class="card-header">{{workout_title}}
+               
+          <span class="head-style">Workout date {{workout_date}}</span>
+            </h3>
+            <div>
+              <ul>
+              {{#each exercises}}
+              <li>
+              {{exercise_title}}
+              </li>
+              {{/each}}
+              </ul>
+            </div>
+      </div>
+      </a>
+    
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}
+
+<div class="card">
+  <h3 class="card-header">Add Your Work Out</h3>
+  <div>
+    <select id="workout_id">
+      {{#each workouts as | workout |}}
+      {{#each exercises}}
+      <option value="{{id}}">      
+        {{workout.workout_title}} - {{exercise_title}}
+      </option>
+      {{/each}}
+      {{/each}}
+    </select>
+  </div>
+</div>
+
+{{workout_title}}
+
+<div style="text-align: center;">
+  <a href="/dashboard">
+<button type="button" class="btn-post"><ion-icon name="add-outline"></ion-icon>New Post</button>
+  </a>
+</div>
+
+
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

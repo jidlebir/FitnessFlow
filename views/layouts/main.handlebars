@@ -8,37 +8,52 @@
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
-  <title>The Tech Blog</title>  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    
+    <link rel="stylesheet" href="/stylesheets/feed.css">
+  <title>Fitness Flow</title>  
+  
 </head>
 
 <body>  
   <header class="hero">
   <div class="container">
-    <nav class="nav-bar">
+    <nav class="ui secondary  menu">
         {{#if loggedIn}}
-        <a href="/" class="btn">Home</a>
-        <a href="/dashboard-list" class="btn">Dashboard</a>
-        <a id="logout" class="btn">Logout</a>
+        <a href="/" class="item">Home</a>
+        <a href="/dashboard-list" class="item">Dashboard</a>
+        {{!-- <a href="/profile" class="item">My Profile</a> --}}
+        <div class="right menu">
+        <a id="logout" class="item">Logout</a>
+        </div>
         {{else}}
-        <a href="/" class="btn">Home</a>
-        <a href="/login" class="btn">Dashboard</a>
-        <a href="/login" class="btn">Login</a>
+        <a href="/" class="item">Home</a>
+        <a href="/login" class="item">Dashboard</a>
+        <div class="right menu">
+        <a href="/login" class="item">Login</a>
+        </div>
         {{/if}}
+          
     </nav>
+        <div>          
+            <img src="/img/FitnessFlow_logo_6.png" alt="logo" />          
+        </div> 
   </div>
-     <h1>
-      <a href="/" class="app-title">The Tech Blog</a>
-    </h1>      
+       
   </header>
  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>           
   <div class="wrapper">
     <main>
       {{{ body }}}
     </main>
   </div>
 
-  {{#if loggedIn}}            
+  {{#if loggedIn}} 
   <script src="/javascript/logout.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
   {{/if}}
+  
 </body>
+
 </html>
