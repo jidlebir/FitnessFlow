@@ -217,7 +217,7 @@ margin-bottom: 3%;
 
 .card-header {
   color: var(--primary);
-  background-color: var(--dark);    
+  background-color: var(--light);    
   padding: .75%;
   border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
 }
