@@ -6,6 +6,7 @@ const Downvote = require('./Downvote');
 const Comment = require('./Comment');
 const Workout = require('./Workout');
 const Exercise = require('./Exercise');
+const Profile = require('./Profile');
 
 
 // create associations
@@ -120,6 +121,17 @@ Exercise.belongsTo(Workout, {
   onDelete: 'SET NULL'
 });
 
+// -------------------//
+
+User.hasMany(Profile,{
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+}),
+Profile.belongsTo(User,{
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+}),
 
 
-module.exports = { User, Post, Vote, Downvote, Comment, Workout, Exercise };
+
+module.exports = { User, Post, Vote, Downvote, Comment, Workout, Exercise, Profile };

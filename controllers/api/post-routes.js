@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/', (req, res) => {
   Post.findOne({
     where: {
       id: req.params.id
