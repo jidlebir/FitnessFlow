@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+const { User } = require('.');
 const sequelize = require('../config/connection');
 
 class User_Workout extends Model {}
@@ -14,7 +15,6 @@ User_Workout.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
-    
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -29,7 +29,6 @@ User_Workout.init(
         key: 'id'
       }
     },   
-    
   },
   {
     sequelize,
@@ -39,5 +38,13 @@ User_Workout.init(
     modelName: 'workout'
   }
 );
+
+await User.drop();
+console.log("User_Workout table dropped!");
+
+await sequelize.drop();
+console.log("All tables dropped!");
+    
+    
 
 module.exports = Workout;
