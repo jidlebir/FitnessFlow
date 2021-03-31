@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS mvc_challenge_db;
+DROP DATABASE IF EXISTS fitFlow_db;
 
-CREATE DATABASE mvc_challenge_db;
+CREATE DATABASE fitFlow_db;
