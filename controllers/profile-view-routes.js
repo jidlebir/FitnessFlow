@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 const { Post, User, Comment, Vote, Downvote, Workout, Exercise, Profile } = require('../models');
 const withAuth = require('../utils/auth');
 
-// get all posts for dashboard
+// get all profiles
 router.get('/', withAuth, (req, res) => {
   console.log(req.session);
   console.log('======================');
@@ -18,12 +18,16 @@ router.get('/', withAuth, (req, res) => {
         'height',
         'weight',
         'favorite_workout',
+        'user_id',
         'created_at'  
     ],
     include: [
       {
         model: User,
-        attributes: ['username']
+        attributes: [
+          'username',
+          'id'
+      ]
       },
       
     ]
@@ -40,20 +44,24 @@ router.get('/', withAuth, (req, res) => {
 });
 
 router.get('/edit/:id', withAuth, (req, res) => {
-  Post.findByPk(req.params.id, {
+  Profile.findOne(req.params.id, {
     attributes: [
         'id',
         'name',
         'age',
         'height',
         'weight',
+        'user_id',
         'favorite_workout',
         'created_at'  
     ],
     include: [
       {
         model: User,
-        attributes: ['username']
+        attributes: [
+          'username',
+          'id'
+      ]
       },    
     ]
   })
@@ -62,7 +70,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
         console.log("****", dbProfileData);
         const profile = dbProfileData.get({ plain: true });
         
-        res.render('profile', {
+        res.render('edit-profile', {
           profile,
           loggedIn: true
         });

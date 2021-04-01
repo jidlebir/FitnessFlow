@@ -15,6 +15,7 @@ router.get('/', withAuth, (req, res) => {
       'id',
       'content',
       'title',
+      'user_id',
       'created_at', 
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count'],
       [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE post.id = downvote.post_id)'), 'down_vote_count']     
@@ -30,7 +31,10 @@ router.get('/', withAuth, (req, res) => {
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: [
+          'username',
+          'id'
+      ]
       },
       
     ]
@@ -52,6 +56,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
       'id',
       'content',
       'title',
+      'user_id',
       'created_at', 
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count'],
       [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE post.id = downvote.post_id)'), 'down_vote_count']   
@@ -67,7 +72,10 @@ router.get('/edit/:id', withAuth, (req, res) => {
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: [
+          'username',
+          'id'
+      ]
       },   
     ]
   })

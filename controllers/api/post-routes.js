@@ -28,8 +28,8 @@ router.get('/', (req, res) => {
         model: User,
         attributes: [
           'username',
-          
-        ]
+          'id'
+      ]
       },
       // {
       //   model: Workout
@@ -67,7 +67,10 @@ router.get('/', (req, res) => {
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: [
+          'username',
+          'id'
+      ]
       },   
     ]
   })

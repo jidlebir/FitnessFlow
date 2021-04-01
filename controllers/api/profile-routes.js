@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
       },
     ]
   })
-    .then(dbProfileData => res.json(dbProfileData))
+    .then(dbProfileData => res.json(dbProfileData))    
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -47,12 +47,16 @@ router.get('/:id', (req, res) => {
       'height',
       'weight',
       'favorite_workout',
+      'user_id',
       'created_at',              
     ],
     include: [
       {
         model: User,
-        attributes: ['username']
+        attributes: [
+          'username',
+          "id"
+        ]
       },   
     ]
   })

@@ -17,7 +17,7 @@ async function signupFormHandler(event) {
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard-list/');
+        document.location.replace('/profile-view/');
       } else {
         alert(response.statusText);
       }

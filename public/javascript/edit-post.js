@@ -1,19 +1,18 @@
 async function editFormHandler(event) {
   event.preventDefault();
 
-  const WorkoutTitle = document.querySelector('input[name="workout-title"]').value.trim();
-  const date = document.querySelector('textarea[name="date-content"]').value.trim();
+  const title = document.querySelector('input[name="post-title"]').value.trim();
+  const content = document.querySelector('textarea[name="post-content"]').value.trim();
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
 
-//  ==================add Jens table and Routes==========//
-  const response = await fetch(`/api/user-workout/${id}`, {
-    // ===================================================//
+ 
+  const response = await fetch(`/api/posts/${id}`, {
     method: 'PUT',
     body: JSON.stringify({
-      title, //workout-title
-      content // date
+      title,
+      content
          
     }),
     headers: {
@@ -28,4 +27,4 @@ async function editFormHandler(event) {
   }
 }
 
-document.querySelector('#edit-workout-form').addEventListener('submit', editWorkoutHandler);
+document.querySelector('#edit-post-form').addEventListener('submit', editFormHandler);

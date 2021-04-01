@@ -1,19 +1,33 @@
-<section>
-<div class="card">
-   <h4 class="card-header text-uppercase">Edit Post</h4>
-    <form id="edit-post-form" class="card-body">
+<div class="profile-page">
+   <h4 class="card-header text-uppercase">My Profile</h4>
+    <form id="profile" class="card-body">
       <div>
-        <label class="form-label" for="post-title">Title</label>
-        <input class="form-input-login"type="text" id="post-title" name="post-title" autofocus="true"value="{{post.title}}"/>    
-
-        <label class="form-label" for="post-content">Content</label>
-        <textarea class="form-input" type="text" id="post-content" name="post-content">{{post.content}}</textarea>
+        <label class="form-label" for="profile-name">Name:</label>
+        <input class="form-input-profile" type="text" id="profile-name" name="profile-name" autofocus="true" value="{{profile.name}}"/>
       </div>
-      
-      <button type="submit" id="edit-post-btn" class="btn-login">Update Post</button>        
-      <button type="submit" id="delete-post-btn" class="btn-login">Delete</button>        
+      <div>
+        <label class="form-label" for="profile-age">Age:</label>
+        <input class="form-input-profile"type="text" id="profile-age" name="profile-age" value="{{profile.age}}"/>
+      </div> 
+      <div>
+        <label class="form-label" for="profile-height">Height:</label>
+        <input class="form-input-profile" type="text" id="profile-height" name="profile-height" value="{{profile.height}}" />
+      </div>
+      <div>
+        <label class="form-label" for="profile-weight">Weight:</label>
+        <input class="form-input-profile" type="text" id="profile-weight" name="profile-weight" value="{{profile.weight}}"/>
+      </div>
+      <div>
+        <label class="form-label" for="profile-workout">Favorite Workout:</label>
+        <input class="form-input-profile" type="text" id="profile-workout" name="profile-workout" value="{{profile.favorite_workout}}" />
+      </div>
+            <button type="submit" class="btn-save" id="edit-profile">Edit Profile!</button>  
     </form>
-    <a href="/dashboard-list"><ion-icon name="arrow-back-outline"></ion-icon>Back</a>
-  </div>  
-  
-  </section>
+    
+    
+    <a href="/dashboard-list" class="form-a">back</a>
+    
+</form>
+
+
+<script src="/javascript/edit-profile.js"></script>

@@ -18,6 +18,7 @@ class Post extends Model {
           'id',
           'content',
           'title',
+          'user_id',
           'created_at',
           [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count'],
           [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE post.id = downvote.post_id)'), 'downvote_count']
@@ -50,6 +51,7 @@ class Post extends Model {
           'id',
           'content',
           'title',
+          'user_id',
           'created_at',
           [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count'],
           [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE post.id = downvote.post_id)'), 'downvote_count']
