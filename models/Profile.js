@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 
 
 class Profile extends Model {
-
 }
 // create fields/columns for User model
 Profile.init(
