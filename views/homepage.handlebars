@@ -1,12 +1,15 @@
 
-<h2 class="">Community Feed</h2>
+<h2 class="ui centered header">Community Feed</h2>
 
 <div class="ui relaxed divided list">
   {{#each posts as |post| }}  
   <div class="item">    
     {{> post-info post }}          
   </div> 
+<div class="thumbs">
   <ion-icon name="thumbs-up"></ion-icon> {{post.vote_count}}  <ion-icon name="thumbs-down"></ion-icon>{{post.down_vote_count}} 
+</div>
+  
    {{/each}}  
 </div>
 

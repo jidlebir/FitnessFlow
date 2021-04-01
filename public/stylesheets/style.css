@@ -1,10 +1,10 @@
 :root {
-  --primary: #1C2321;
-  --secondary: #2E5EAA;
-  --tertiary: #F7F4F3;
-  --dark: #47A8BD;
-  --light: #A0AAB2;
-  --border-radius: .3rem;
+  --primary: #1c2321;
+  --secondary: #2e5eaa;
+  --tertiary: #f7f4f3;
+  --dark: #47a8bd;
+  --light: #a0aab2;
+  --border-radius: 0.3rem;
 }
 
 * {
@@ -24,7 +24,7 @@ body {
 textarea {
   font-family: "IBM Plex Sans", sans-serif;
   color: var(--dark);
-  line-height: 1.5;
+  line-height: 10vh;
   font-size: 16px;
 }
 
@@ -34,10 +34,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
-  margin: 0;
+  margin: 1em;
   color: var(--dark);
-  line-height: 1.25;
+  line-height: 20vh;
+  padding: 1vw;
 }
 
 main {
@@ -46,19 +46,31 @@ main {
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
- .head-style{
+.logo {
+  flex-wrap: wrap;
+  max-width: 10vw;
+}
+
+.head-style {
   float: right;
-  font-size: .8rem;
-  font-weight: lighter;  
-} 
+  font-size: 0.9rem;
+  font-weight: lighter;
+  font-style: oblique;
+  padding: 1vw;
+}
+
+#comments {
+  padding-right: 2vw;
+  padding-bottom: 0;
+}
 
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;  
+  justify-content: flex-start;
 }
 
 a {
@@ -68,23 +80,22 @@ a {
 
 ul {
   list-style-type: none;
-  
 }
 
-.form-a{
-margin: 3%;
-margin-bottom: 3%;
+.form-a {
+  margin: 3%;
+  margin-bottom: 3%;
 }
 
- .btn {
+.btn {
   font-size: 1.6rem;
-  text-decoration:none;
-  padding: 6px 5px; 
-  margin: 0 3% 0 0;    
-  color: var(--primary);  
+  text-decoration: none;
+  padding: 6px 5px;
+  margin: 0 3% 0 0;
+  color: var(--primary);
 }
 .btn:hover {
-  color:var(--light-dark);  
+  color: var(--light-dark);
   transform: translate(0, 0);
   box-shadow: 2px 2px var(--dark);
 }
@@ -99,23 +110,21 @@ margin-bottom: 3%;
   margin: 3px;
 }
 .btn-login:hover {
-  color:var(--dark);  
+  color: var(--dark);
   transform: translate(0, 0);
   box-shadow: 2px 2px var(--dark);
- 
 }
 .btn-post {
-  
   font-size: 1rem;
-  padding: 6px 5px; 
-  margin: 0 3% 0 0; 
+  padding: 6px 5px;
+  margin: 0 3% 0 0;
   background-color: var(--dark);
   color: var(--primary);
   border-radius: var(--border-radius);
 }
 .btn-post:hover {
-  color:var(--dark);
-  background-color: var(--light-dark); 
+  color: var(--dark);
+  background-color: var(--light-dark);
   transform: translate(0, 0);
   box-shadow: 2px 2px var(--dark);
 }
@@ -140,7 +149,7 @@ margin-bottom: 3%;
   font-size: 1.2rem;
 }
 
- .btn-back:hover {
+.btn-back:hover {
   color: var(--primary);
   background-color: var(--tertiary);
   transform: translate(0, 0);
@@ -148,7 +157,7 @@ margin-bottom: 3%;
 }
 
 .hero {
-  padding: 1% ;
+  padding: 1%;
   background-color: var(--dark);
   color: var(--primary);
 }
@@ -193,11 +202,10 @@ margin-bottom: 3%;
 .status-icon {
   padding: 2px 5px;
   margin: 0 5px;
-  background-color: rgba(255,255,255, 1);
+  background-color: rgba(255, 255, 255, 1);
   border-radius: var(--border-radius);
 }
 /* CARDS */
-
 
 .card {
   margin: 90px;
@@ -212,14 +220,21 @@ margin-bottom: 3%;
   max-width: 100%;
 }
 
-
-
-
 .card-header {
   color: var(--primary);
-  background-color: var(--light);    
-  padding: .75%;
-  border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
+  background-color: var(--light);
+  padding: 0.75%;
+  margin-top: 2vh;
+  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+}
+
+h3.card-header {
+  padding: 2vh;
+}
+
+.comments {
+  float: right;
+  margin-right: 1vw;
 }
 
 .card-body {
@@ -255,7 +270,6 @@ margin-bottom: 3%;
   border-radius: var(--border-radius);
 }
 
-
 /* HEIGHT / WIDTH UTILS */
 .min-100-vh {
   min-height: 100vh;
@@ -269,7 +283,6 @@ margin-bottom: 3%;
 .text-uppercase {
   text-transform: uppercase;
 }
-
 
 /* FLEX CONTENT */
 .flex-row {
@@ -292,7 +305,7 @@ margin-bottom: 3%;
 }
 
 .justify-flex-start {
-  justify-content: flex-start
+  justify-content: flex-start;
 }
 
 .justify-flex-end {
@@ -417,7 +430,6 @@ margin-bottom: 3%;
     flex: 0 0 100%;
   }
 }
-
 
 /* col-md */
 @media screen and (min-width: 768px) {
@@ -573,5 +585,5 @@ margin-bottom: 3%;
 }
 
 .ui.three.column.grid {
-padding: 20px;
+  padding: 20px;
 }

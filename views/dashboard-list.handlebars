@@ -1,10 +1,11 @@
-<div class="ui grid">
-  <div class="sixteen wide column">
-  <h2>Your Workout Posts</h2>
+<h2 class = "ui centered header">Your Workout Posts</h2>
+<div class="ui centered grid">
+  
 {{#if posts.length}}
 <section>
-  
-  <div class="ui feed">
+  <div>
+<div class="doubling two column row">
+ <div class="ui centered feed">
   <ul>
     {{#each posts as | post|}}
     <li> 
@@ -17,8 +18,8 @@
         </div>
       </div>
       <a href="/dashboard-list/edit/{{post.id}}" class="edit-link">       
-          <div class="card">
-           <h3 class="card-header">{{title}}
+          <div class="ui raised card">
+           <h3 class="centered header">{{title}}
           <span class="head-style">Posted by {{user.username}} on {{format_date created_at}}</span>
             </h3>
           </div>
@@ -27,14 +28,23 @@
     {{/each}}
   </ul> 
 
-</section>
-{{/if}}
-    <div style="text-align: center;">
+</div>
+
+  </div>
+  <div style="text-align: center;">
       <a href="/dashboard">
     <button type="button" class="btn-post"><ion-icon name="add-outline"></ion-icon>New Workout Post</button>
       </a>
     </div>
-  </div>
+
+</section>
+{{/if}}
+   
+    </div>
+  
+  
+  
+  
 
 
   {{!-- <div class="eight wide column">

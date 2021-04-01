@@ -1,22 +1,27 @@
 
+<div class="ui centered grid">
+<div class="doubling two column row">
 <article class="post">  
- <a href="/post/{{id}}">
-  <div class="card">  
-    <h3 class="card-header">{{title}}
-      <span class="head-style">Posted by {{user.username}} on {{format_date created_at}} <br>{{comments.length}} {{format_plural "comment" comments.length}}</span>      
+  <a href="/post/{{id}}">
+    <div class="ui raised card">  
+    <h3 class="centered header">{{title}}
+      <span class="head-style">Posted by {{user.username}} on {{format_date created_at}} <br></span>      
     </h3>
       <div>
         {{content}}                  
       </div>  
-               
+       <div>
+         
+         <span id = "comments" class="right floated comments"><i class="comment"></i>{{comments.length}} {{format_plural "comment" comments.length}}</span>
+       </div>        
   </div>
-  <div>
-    
-  </div>
-  
  </a>
-
 </article>
+</div>
+
+
+</div>
+
 
 {{!-- <div class="ui stackable grid container">
   <div class="column">
@@ -38,4 +43,4 @@
     </div>
   </div>
   </div>
-</div> --}}
+</div>  --}}
