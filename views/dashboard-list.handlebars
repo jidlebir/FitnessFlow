@@ -24,8 +24,12 @@
             
           </div>
     </a>
-    </li>        
-    {{/each}}   
+    </li>    
+    {{user.id}} 
+    {{user.username}}
+    {{user.email}}  
+    
+      {{/each}}
   </ul>
 
 
@@ -46,19 +50,7 @@
   <div class="eight wide column">
     <a href='/workout-list'>
     <h2>Your Workouts</h2>
-    </a>
-    <div class="ui simple dropdown">
-      <input type="hidden" name="muscle">
-      <i class="dropdown icon"></i>
-      <div class="default text">Muscle Group</div>
-      <div class="menu">
-        <a class="item" data-value="0">Abs</a>
-        <a class="item" data-value="1">Back</a>
-        <a class="item" data-value="2">Legs</a>
-        <a class="item" data-value="3">Chest</a>
-        <a class="item" data-value="4">Cardio</a>
-        <a class="item" data-value="5">Arms</a>
-      </div>
+    
     </div>
   </div>
 </div>

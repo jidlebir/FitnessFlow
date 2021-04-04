@@ -2,7 +2,7 @@
 
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { User, Profile } = require('../../models');
+const { User, Profile, User_Workout } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all users
@@ -18,15 +18,12 @@ router.get('/', (req, res) => {
       'favorite_workout',
       'created_at'  
     ],
-    include: [
-     {
-        model: User,
-        attributes: [
-          'username',
-          
-        ]
-      },
-    ]
+    include:
+    {
+      model: User,
+      attributes: ['username'],
+      through: User_Workout,
+      as: 'user_profile'    },
   })
     .then(dbProfileData => res.json(dbProfileData))    
     .catch(err => {
@@ -50,15 +47,13 @@ router.get('/:id', (req, res) => {
       'user_id',
       'created_at',              
     ],
-    include: [
-      {
-        model: User,
-        attributes: [
-          'username',
-          "id"
-        ]
-      },   
-    ]
+    include:
+    {
+      model: User,
+      attributes: ['username'],
+      through: User_Workout,
+      as: 'user_profile'    },
+
   })
     .then(dbProfileData => {
       if (!dbProfileData) {
@@ -142,7 +137,3 @@ router.delete('/:id',(req, res) => {
 module.exports = router;
 
 
-// router.get("/", function (req, res) {
-//   res.render("profile");
-// });
-// module.exports = router;

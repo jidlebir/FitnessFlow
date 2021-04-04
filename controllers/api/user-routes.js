@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment, Vote, Downvote, Workout, Exercise } = require('../../models');
+const { User, Post, Comment, Vote, Downvote, Workout, Exercise, User_Workout, Profile } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
@@ -45,9 +45,30 @@ router.get('/:id', (req, res) => {
         as: 'down_voted_posts'
       },
       {
-        model: Workout
-      },    
-   
+        model: Workout,
+        attributes: ["workout_title"],
+        through: User_Workout,
+        as: "user_Wo"
+      },
+      {
+        model: Exercise,
+        attributes: ["exercise_title"],
+        through: User_Workout,
+        as: "user_exercise"
+      },
+      {
+        model: User_Workout,
+        attributes: [
+          'id',
+          'user_id',
+          'exercise_id',
+          'workout_id'          
+        ]
+      },
+      {
+        model: Profile
+      }
+ 
     ]
   })
     .then(dbUserData => {

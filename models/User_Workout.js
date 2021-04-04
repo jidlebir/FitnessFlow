@@ -12,7 +12,7 @@ User_Workout.init(
     },
     workout_date: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     
     user_id: {
@@ -29,6 +29,20 @@ User_Workout.init(
         key: 'id'
       }
     },   
+    profile_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'profile',
+        key: 'id'
+      }
+    },   
+    post_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'post',
+        key: 'id'
+      }
+    },   
     
   },
   {
@@ -36,8 +50,8 @@ User_Workout.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'workout'
+    modelName: 'user_workout'
   }
 );
 
-module.exports = Workout;
+module.exports = User_Workout;

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment, Vote, Downvote, Workout, Exercise, Profile } = require('../models');
+const { Post, User, Comment, Vote, Downvote, Workout, Exercise, Profile, User_Workout } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all profiles
@@ -21,16 +21,14 @@ router.get('/', withAuth, (req, res) => {
         'user_id',
         'created_at'  
     ],
-    include: [
-      {
-        model: User,
-        attributes: [
-          'username',
-          'id'
-      ]
-      },
-      
-    ]
+    include:
+    {
+      model: User,
+      attributes: ['username'],
+      through: User_Workout,
+      as: 'user_profile'    },
+   
+
   })
     .then(dbProfileData => {
       console.log('====Profile===', dbProfileData);
@@ -43,8 +41,11 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
-router.get('/edit/:id', withAuth, (req, res) => {
-  Profile.findOne(req.params.id, {
+router.get('/edit/', withAuth, (req, res) => {
+  Profile.findOne({
+    where: {
+      user_id: req.session.user_id
+    },
     attributes: [
         'id',
         'name',
@@ -55,19 +56,16 @@ router.get('/edit/:id', withAuth, (req, res) => {
         'favorite_workout',
         'created_at'  
     ],
-    include: [
-      {
-        model: User,
-        attributes: [
-          'username',
-          'id'
-      ]
-      },    
-    ]
+    include:
+    {
+      model: User,
+      attributes: ['username'],
+      through: User_Workout,
+      as: 'user_profile'    },
   })
     .then(dbProfileData => {
       if (dbProfileData) {
-        console.log("****", dbProfileData);
+        console.log("****", dbProfileData[0]);
         const profile = dbProfileData.get({ plain: true });
         
         res.render('edit-profile', {

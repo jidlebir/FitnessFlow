@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Comment, Vote, Downvote, Workout } = require('../../models');
+const { Post, User, Comment, Vote, Downvote, Workout, Exercise, Profile, User_Workout} = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all users
@@ -28,12 +28,29 @@ router.get('/', (req, res) => {
         model: User,
         attributes: [
           'username',
-          'id'
+          'id',
+          "email",           
       ]
-      },
-      // {
-      //   model: Workout
-      // }
+    },      
+    {
+      model: Profile,
+      // attributes: ['id'],
+      through: User_Workout,
+      as: 'post_profile'    
+    },
+    {
+      model: Workout,
+      through: User_Workout,
+      as: 'post_workout'
+
+    },
+    {
+      model: Exercise,
+      through: User_Workout,
+      as: 'post_exercise'
+
+    }            
+      
     ]
   })
     .then(dbPostData => res.json(dbPostData))
@@ -69,9 +86,29 @@ router.get('/', (req, res) => {
         model: User,
         attributes: [
           'username',
-          'id'
-      ]
-      },   
+          'id',
+          'email',
+          
+        ]
+      }, 
+      {
+        model: Profile,
+        // attributes: ['id'],
+        through: User_Workout,
+        as: 'post_profile'    
+      }, 
+      {
+        model: Workout,
+        through: User_Workout,
+        as: 'post_workout'
+
+      },
+      {
+        model: Exercise,
+        through: User_Workout,
+        as: 'post_exercise'
+
+      }            
     ]
   })
     .then(dbPostData => {
@@ -206,8 +243,11 @@ router.get('/:id', (req, res) => {
         as: 'down_voted_posts'
       },
       {
-        model: Workout
-      },    
+        model: User,
+        attributes: ['workout_title'],
+        through: User_Workout,
+        as: 'user-Wo'
+      },
    
     ]
   })

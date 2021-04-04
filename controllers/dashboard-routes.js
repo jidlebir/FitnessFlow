@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment, Vote, Downvote } = require('../models');
+const { Post, User, Comment, Vote, Downvote, Profile, Exercise, Workout } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all posts for dashboard
@@ -32,7 +32,25 @@ router.get('/', withAuth, (req, res) => {
       {
         model: User,
         attributes: ['username']
-      }
+      },
+      {
+        model: Profile,
+        // attributes: ['id'],
+        through: User_Workout,
+        as: 'post_profile'    
+      },
+      {
+        model: Workout,
+        through: User_Workout,
+        as: 'post_workout'
+  
+      },
+      {
+        model: Exercise,
+        through: User_Workout,
+        as: 'post_exercise'
+  
+      }            
     ]
   })
     .then(dbPostData => {
@@ -68,7 +86,25 @@ router.get('/edit/:id', withAuth, (req, res) => {
       {
         model: User,
         attributes: ['username']
-      }
+      },
+      {
+        model: Profile,
+        // attributes: ['id'],
+        through: User_Workout,
+        as: 'post_profile'    
+      },
+      {
+        model: Workout,
+        through: User_Workout,
+        as: 'post_workout'
+  
+      },
+      {
+        model: Exercise,
+        through: User_Workout,
+        as: 'post_exercise'
+  
+      }            
     ]
   })
     .then(dbPostData => {

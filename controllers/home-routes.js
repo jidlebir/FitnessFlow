@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment, Vote, Downvote } = require('../models');
+const { Post, User, Comment, Vote, Downvote, Profile, User_Workout, Workout, Exercise } = require('../models');
 
 // get all posts for homepage
 router.get('/', (req, res) => {
@@ -26,11 +26,29 @@ router.get('/', (req, res) => {
       },
       {
         model: User,
-        attributes: ['username']
-      }
+        attributes: ['username', 'id']
+      },
+      {
+        model: Profile,       
+        through: User_Workout,
+        as: 'post_profile'    
+      }, 
+      {
+        model: Workout,
+        through: User_Workout,
+        as: 'post_workout'
+
+      },
+      {
+        model: Exercise,
+        through: User_Workout,
+        as: 'post_exercise'
+
+      }              
     ]
   })
     .then(dbPostData => {
+      console.log('****HOME****', dbPostData[0]);
       const posts = dbPostData.map(post => post.get({ plain: true }));
 
       res.render('homepage', {
@@ -69,8 +87,26 @@ router.get('/post/:id', (req, res) => {
       },
       {
         model: User,
-        attributes: ['username']
-      }
+        attributes: ['username', 'id']
+      },
+      {
+        model: Profile,
+        // attributes: ['id'],
+        through: User_Workout,
+        as: 'post_profile'    
+      },
+      {
+        model: Workout,
+        through: User_Workout,
+        as: 'post_workout'
+
+      },
+      {
+        model: Exercise,
+        through: User_Workout,
+        as: 'post_exercise'
+
+      }                    
     ]
   })
     .then(dbPostData => {

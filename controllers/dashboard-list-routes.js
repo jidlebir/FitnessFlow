@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment, Vote, Downvote, Workout, Exercise } = require('../models');
+const { Post, User, Comment, Vote, Downvote, Workout, Exercise, Profile, User_Workout } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all posts for dashboard
@@ -33,13 +33,32 @@ router.get('/', withAuth, (req, res) => {
         model: User,
         attributes: [
           'username',
-          'id'
+          'id',
+          "email",         
       ]
-      },
-      
+    }, 
+    {
+      model: Profile,
+      // attributes: ['id'],
+      through: User_Workout,
+      as: 'post_profile'    
+    }, 
+    {
+      model: Workout,
+      through: User_Workout,
+      as: 'post_workout'
+
+    },
+    {
+      model: Exercise,
+      through: User_Workout,
+      as: 'post_exercise'
+
+    }                
     ]
   })
     .then(dbPostData => {
+      
       console.log('====dash-list==', dbPostData);
       const posts = dbPostData.map(post => post.get({ plain: true }));
       res.render('dashboard-list', { posts, loggedIn: true });
@@ -49,6 +68,8 @@ router.get('/', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+
+//============================================//
 
 router.get('/edit/:id', withAuth, (req, res) => {
   Post.findByPk(req.params.id, {
@@ -74,9 +95,29 @@ router.get('/edit/:id', withAuth, (req, res) => {
         model: User,
         attributes: [
           'username',
-          'id'
+          'id',
+          "email",         
       ]
-      },   
+      },  
+      {
+        model: Profile,
+        // attributes: ['id'],
+        through: User_Workout,
+        as: 'post_profile'    
+      },
+      {
+        model: Workout,
+        through: User_Workout,
+        as: 'post_workout'
+
+      },
+      {
+        model: Exercise,
+        through: User_Workout,
+        as: 'post_exercise'
+
+      }             
+    
     ]
   })
     .then(dbPostData => {
@@ -96,6 +137,9 @@ router.get('/edit/:id', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+
+// ----------------------------------------------//
+
 
 
 

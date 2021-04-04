@@ -6,9 +6,9 @@ async function newProfileHandler(event) {
     const height = document.querySelector('input[name="profile-height"]').value;
     const weight = document.querySelector('input[name="profile-weight"]').value;
     const favorite_workout = document.querySelector('input[name="profile-workout"]').value;
-    const id = 'test'
+    
   
-    const response = await fetch(`/api/profile/`, {
+    const response = await fetch(`/api/profile/${user_id}`, {
       method: 'PUT',
       body: JSON.stringify({
         name,
