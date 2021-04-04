@@ -4,7 +4,7 @@
   ## Description
 This project was designed to allow fitness enthusiasts, athletes and newcomers a place to interact and comment with other fitness enthusiasts.
 
-  * Link for Heroku deployment [Heroku](https://fitnessflow.herokuapp.com//)    
+  * Link for Heroku deployment [Heroku](https://fitnessflow.herokuapp.com/)    
   * Link for GitHub Repository [GitHub](https://github.com/jidlebir/FitnessFlow.git)  
 
 
