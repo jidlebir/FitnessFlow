@@ -1,11 +1,11 @@
-# The Tech Blog
+# Fitness Floww
   ![license](https://img.shields.io/badge/license-MIT-critical?./license/MIT)
 
   ## Description
-This is a tech blog, which allows users to create user accounts to store, edit delete their 'tech' oriented posts. Additionally when logged in, users can comment on other users post  
+This project was designed to allow fitness enthusiasts, athletes and newcomers a place to interact and comment with other fitness enthusiasts.
 
-  * Link for Heroku deployment [Heroku](https://guarded-reaches-64579.herokuapp.com/)    
-  * Link for GitHub Repository [GitHub](https://github.com/a7063p/week-14-challenge.git)  
+  * Link for Heroku deployment [Heroku](https://fitnessflow.herokuapp.com//)    
+  * Link for GitHub Repository [GitHub](https://github.com/jidlebir/FitnessFlow.git)  
 
 
   ## Table of Contents
@@ -31,11 +31,11 @@ This is a tech blog, which allows users to create user accounts to store, edit d
 
   
 
-  ![image](./image/tech-blog.PNG)  
+  ![image](./public/img/fitnessflow.PNG)  
   
   ## Languages  
   ![language](https://img.shields.io/badge/JavaScript-critical)  ![language](https://img.shields.io/badge/ES6-critical)  ![language](https://img.shields.io/badge/Node-critical)  
-  ![language](https://img.shields.io/badge/Insomnia-critical)  ![language](https://img.shields.io/badge/mysql2-critical)  ![language](https://img.shields.io/badge/Express-critical)  ![language](https://img.shields.io/badge/Sequelize-critical)  ![language](https://img.shields.io/badge/Handlebars-critical) ![language](https://img.shields.io/badge/dotenv-critical) ![language](https://img.shields.io/badge/bcrypt-critical) ![language](https://img.shields.io/badge/JawsDB-mySQL-critical) ![language](https://img.shields.io/badge/Express-Session-critical)
+  ![language](https://img.shields.io/badge/Insomnia-critical)  ![language](https://img.shields.io/badge/mysql2-critical)  ![language](https://img.shields.io/badge/Express-critical)  ![language](https://img.shields.io/badge/Sequelize-critical)  ![language](https://img.shields.io/badge/Handlebars-critical) ![language](https://img.shields.io/badge/dotenv-critical) ![language](https://img.shields.io/badge/bcrypt-critical) ![language](https://img.shields.io/badge/JawsDB-mySQL-critical) ![language](https://img.shields.io/badge/Express-Session-critical) ![language](https://img.shields.io/badge/Semantic-critical)
  
 
   ## License
@@ -54,6 +54,9 @@ This is a tech blog, which allows users to create user accounts to store, edit d
   
 
   ## Questions
-  Please feel free to email me with any comments, questions or concerns at ap@ampiUSA.com
+  Please feel free to email us with any comments, questions or concerns at ap@ampiUSA.com
 
-  [GitHub Account](https://github.com/a7063p)
+  A7063P [GitHub Account](https://github.com/a7063p)  
+  Jidlebir [GitHub Account](https://github.com/jidlebir)  
+  JenMol86 [GitHub Account](https://github.com/JenMol86)  
+  AbigailGAdams [GitHub Account](https://github.com/abigailGadams)

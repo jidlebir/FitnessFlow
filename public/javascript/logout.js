@@ -25,8 +25,8 @@ function idleTimer() {
 
  function resetTimer() {
       clearTimeout(timer);
-      timer = setTimeout(logout, 1200000);  
-      // remove one 0
+      timer = setTimeout(logout, 120000);  
+     
       
   }
 };
