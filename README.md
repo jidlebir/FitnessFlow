@@ -1,4 +1,4 @@
-# Fitness Floww
+# Fitness Flow
   ![license](https://img.shields.io/badge/license-MIT-critical?./license/MIT)
 
   ## Description
